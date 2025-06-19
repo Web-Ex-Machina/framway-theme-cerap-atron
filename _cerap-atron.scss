@@ -1,0 +1,25 @@
+
+#home--hero{@extend .title--1 !optional;
+	.heroFW__content{padding-bottom: 0;}
+	.grid-links{
+		@include w-full();
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: flex-end;
+		margin-top: $spacing*2;
+		padding-block: $spacing*2;
+		padding-inline: $spacing;
+		@include linear-grad(
+			(
+				(#fff,1.5em,0),
+				($primary,3.5em,0.25),
+				($primary,100%,8.5)
+			),
+			'to bottom');
+		.grid-item{padding-inline: $spacing;}
+	}
+}
