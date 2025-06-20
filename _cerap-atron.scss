@@ -2,24 +2,42 @@
 #home--hero{@extend .title--1 !optional;
 	.heroFW__content{padding-bottom: 0;}
 	.grid-links{
-		@include w-full();
+		// @include w-full();
+		position: relative;
 		text-align: center;
 		color: white;
 		font-weight: bold;
-		display: flex;
+		display: flex !important;
 		flex-wrap: wrap;
-		justify-content: center;
-		align-items: flex-end;
+		justify-content: space-evenly;
+		// justify-content: center;
+		// align-items: flex-end;
 		margin-top: $spacing*2;
 		padding-block: $spacing*2;
 		padding-inline: $spacing;
-		@include linear-grad(
-			(
-				(#fff,1.5em,0),
-				($primary,3.5em,0.25),
-				($primary,100%,8.5)
-			),
-			'to bottom');
-		.grid-item{padding-inline: $spacing;}
+		gap: 0;
+		row-gap: $spacing*2;
+		&:before{
+			@include w-full();
+			@include linear-grad(
+				(
+					(#fff,1.5em,0),
+					($primary,3.5em,0.25),
+					($primary,100%,8.5)
+				),
+				'to bottom');
+			content:"";
+			position: absolute;
+			inset:0;
+			z-index: -1;
+		}
+		container-name: grid-links;
+		container-type: inline-size;
+		.item-grid{padding-inline: $spacing; min-width: 0; flex-basis: 300px; flex-grow: 1; align-content: end;
+			&:not(:first-child):not(:last-child){border-inline: 1px solid #fff; margin: auto;}
+			@container (max-width: calc(900px)) {
+				&:not(:first-child):not(:last-child){border-inline: 0;}
+			}
+		}
 	}
 }
